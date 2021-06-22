@@ -54,8 +54,47 @@ body.dark {
 }
 
 .sun-moon-container {
+  --rotation: 0;
+
   position: absolute;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   height: 200vmin;
+  transform: rotate(calc(var(--rotation) * 1deg));
+  transition: transform var(--transition-delay);
+}
+
+.dark .sun-moon-container {
+  --rotation: 180deg;
+}
+
+.sun,
+.moon {
+  position: absolute;
+  transition: opacity, fill var(--transition-delay);
+  width: 30px;
+  height: 30px;
+  fill: var(--accent-color);
+}
+
+.sun {
+  top: 5%;
+  opacity: 1;
+}
+
+.dark .sun {
+  opacity: 0;
+}
+
+.moon {
+  bottom: 5%;
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.dark .moon {
+  opacity: 1;
 }
